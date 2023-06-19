@@ -31,7 +31,8 @@ export function Main() {
   }
 
   function handleNewTaskChange() {
-    setNewTask({ isChecked: false, content: event?.target?.value });
+    const target = event?.target as HTMLInputElement;
+    setNewTask({ isChecked: false, content: target?.value });
   }
 
   function deleteTask(taskToDelete: Task) {
