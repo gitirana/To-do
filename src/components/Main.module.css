@@ -48,3 +48,55 @@
   color: var(--gray-100);
   font-size: 0.75rem;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: calc(0px - 1.5rem - 6px);
+  gap: 0.5rem;
+  max-width: 50rem;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.input {
+  padding: 1rem;
+  background-color: var(--gray-500);
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  width: 100%;
+  color: var(--gray-100);
+  outline: none;
+}
+
+.input:valid {
+  border: 1px solid var(--purple-300);
+}
+
+.input::placeholder {
+  color: var(--gray-300);
+}
+
+.button {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  border: 0;
+  background-color: var(--blue-500);
+  color: var(--gray-100);
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: color 0.1s, background-color 0.1s;
+}
+
+.button:hover {
+  background-color: var(--blue-300);
+}
+
+.button svg {
+  font-size: 1rem;
+}

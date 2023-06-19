@@ -1,5 +1,4 @@
 import { Header } from "./components/Header";
-import { CreateTask } from "./components/CreateTask";
 import { Main } from "./components/Main";
 
 import styles from "./App.module.css";
@@ -10,7 +9,6 @@ export function App() {
     <>
       <Header />
       <div className={styles.wrapper}>
-        <CreateTask />
         <Main />
       </div>
     </>
