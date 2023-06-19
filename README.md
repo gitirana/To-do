@@ -19,13 +19,20 @@
   <li>[ ] Completion progress</li>
 </ul>
 
+<h3>Layout</h3>
+The application layout is available on Figma:
+
+<a href="https://www.figma.com/file/5alTeyJIDwjSN5rhFL8lj9/ToDo-List-%E2%80%A2-Desafio-1-React?type=design&node-id=0%3A1&t=hcOuuoY97o4hDc9o-1">
+  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Access%20Layout%20-Figma-%2304D361">
+</a>
+
 <h3>Prerequisites</h3>
 
 <p>Before you start, you will need to have the following tools installed on your machine: 
 <a href="https://git-scm.com">Git</a>, <a href="https://nodejs.org/en/">Node.js</a>.
 Also, it's good to have an editor to work with the code like <a href="https://code.visualstudio.com/">VSCode</a>.</p>
 
-<h3>🎲 How to install</h3>
+<h3>How to install</h3>
 
 ```bash
 # Clone this repository
