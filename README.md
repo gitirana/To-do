@@ -15,8 +15,8 @@
 <ul>
   <li>[x] Add task</li>
   <li>[x] Remove task</li>
-  <li>[ ] Complete task</li>
-  <li>[ ] Completion progress</li>
+  <li>[x] Complete task</li>
+  <li>[x] Completion progress</li>
 </ul>
 
 <h3>Layout</h3>
@@ -69,7 +69,7 @@ $ npm run dev
 If you want to use the application, access [Netlify](https://rockeatseat-todo.netlify.app/).
 
 <h4 align="center"> 
-	🚧  To do 🚀 In progress...  🚧
+	🚧  To do ✅ Completed!  🚧
 </h4>
 
 <h3>Author</h3>
