@@ -9,34 +9,25 @@ interface Task {
 
 interface Props {
   task: Task;
-  onDeleteTask: any;
-  onCheckTask: any;
+  onDeleteTask: (index: number) => void;
+  onCheckTask: (task: Task, index: number) => void;
+  index: number;
 }
 
-export function Task({ task, onDeleteTask, onCheckTask }: Props) {
+export function Task({ task, onDeleteTask, onCheckTask, index }: Props) {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleDeleteTask() {
-    onDeleteTask(task);
+    onDeleteTask(index);
   }
 
   function handleCheckTask() {
-    setIsChecked(!isChecked);
+    const newIsCheckedValue = !isChecked;
 
-    onCheckTask(task);
+    setIsChecked(newIsCheckedValue);
+
+    onCheckTask({ ...task, isChecked: newIsCheckedValue }, index);
   }
-  //className={onCheck ? styles.checkedTaskText : styles.uncheckedTaskText}
-
-  /*{onCheck ? (
-        <CheckCircle
-          size={24}
-          weight="fill"
-          className={styles.checkedTask}
-          onClick={handleCheckTask}
-        />
-      ) : (
-        <Circle size={24} weight="bold" className={styles.uncheckedTask} />
-      )} */
 
   return (
     <div className={styles.container}>
@@ -55,7 +46,13 @@ export function Task({ task, onDeleteTask, onCheckTask }: Props) {
           onClick={handleCheckTask}
         />
       )}
-      <span className={styles.uncheckedTaskText}>{task.content}</span>
+      <span
+        className={
+          isChecked ? styles.checkedTaskText : styles.uncheckedTaskText
+        }
+      >
+        {task.content}
+      </span>
 
       <div className={styles.trashCan} onClick={handleDeleteTask}>
         <Trash size={20} weight="bold" />

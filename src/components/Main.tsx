@@ -17,7 +17,6 @@ export function Main() {
     isChecked: false,
     content: "",
   });
-  const [counter, setCounter] = useState(0);
 
   function handleCreateNewTask() {
     event?.preventDefault();
@@ -35,31 +34,24 @@ export function Main() {
     setNewTask({ isChecked: false, content: target?.value });
   }
 
-  function deleteTask(taskToDelete: Task) {
-    const newTasksList = tasks.filter((task) => {
-      return task.content !== taskToDelete.content;
-    });
+  function deleteTask(indexToDelete: number) {
+    const newTasksList: Task[] = [...tasks];
+    newTasksList.splice(indexToDelete, 1);
 
     setTasks(newTasksList);
   }
 
-  function checkTask(taskToCheck: Task) {
-    /*tasks.filter((task) => {
-      task === taskToCheck && setCounter(counter + 1);
-    });
-    console.log(counter); */
+  function checkTask(taskToCheck: Task, index: number) {
+    const newTasksList: Task[] = [...tasks];
+    newTasksList[index] = taskToCheck;
 
-    tasks.filter((task) => {
-      if (task === taskToCheck) {
-        task = {
-          isChecked: taskToCheck.isChecked,
-          content: taskToCheck.content,
-        };
+    setTasks(newTasksList);
+  }
 
-        task.isChecked && setCounter(counter + 1);
-        console.log(task);
-      }
-    });
+  function countCompletedTasks() {
+    const counter = tasks.filter((task) => task.isChecked).length;
+
+    return counter;
   }
 
   return (
@@ -70,6 +62,7 @@ export function Main() {
           className={styles.input}
           onChange={handleNewTaskChange}
           value={newTask.content}
+          required
         />
 
         <button type="submit" className={styles.button}>
@@ -93,7 +86,9 @@ export function Main() {
 
             <div className={styles.badge}>
               <strong>
-                {tasks.length === 0 ? `0` : `${counter} de ${tasks.length}`}
+                {tasks.length === 0
+                  ? `0`
+                  : `${countCompletedTasks()} de ${tasks.length}`}
               </strong>
             </div>
           </div>
@@ -101,12 +96,13 @@ export function Main() {
 
         <div className={styles.tasksList}>
           {tasks.length > 0 ? (
-            tasks.map((task) => (
+            tasks.map((task, index) => (
               <Task
                 key={task.content}
                 task={task}
                 onDeleteTask={deleteTask}
                 onCheckTask={checkTask}
+                index={index}
               />
             ))
           ) : (
